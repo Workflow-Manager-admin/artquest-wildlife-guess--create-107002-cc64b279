@@ -1,104 +1,177 @@
-/* CSS Variables for Theme Management */
+/* ArtQuest DoodleFinder Main SPA Styles */
+
+/* Main Palette & CSS Variables */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --bg-primary: #fcfcfc;
+  --bg-secondary: #ffffff;
+  --accent-primary: #d4ff00;
+  --accent-secondary: #0e1513;
+  --accent-card: #fcfcfc;
+  --text-primary: #181f14;
+  --text-secondary: #747c63;
+  --shadow-main: 0 3px 32px #0e151323;
+  --border-main: #d4ff0090;
+  --navbar-height: 56px;
 }
 
 [data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+  --bg-primary: #141914;
+  --bg-secondary: #222b22;
+  --accent-primary: #97cd29;
+  --accent-secondary: #d4ff00;
+  --accent-card: #232d20;
+  --text-primary: #d4ff00;
+  --text-secondary: #eefed9;
+  --shadow-main: 0 3px 44px #d4ff0026;
+  --border-main: #d4ff00cc;
 }
 
+body,
 .App {
   text-align: center;
-  background-color: var(--bg-primary);
+  background: var(--bg-primary);
   color: var(--text-primary);
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height:100vh;
+  font-family: "Poppins", "Segoe UI", "Inter", Arial, sans-serif;
+  transition: background 0.36s, color 0.3s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-navbar {
+  width:100vw; top:0; left:0;
+  background: var(--accent-primary);
+  color: var(--accent-secondary);
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 17px 0 3vw;
+  box-shadow: 0 2.5px 14px 0 #d4ff0046, 0 1.5px #0e151343;
+  font-size: 1.21rem;
+  font-weight:700;
+  letter-spacing: -.03em;
+  z-index:20;
+  position:sticky;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo-text {
+  font-family: "Fredoka", "Poppins", sans-serif;
+  font-size: 1.34em;
+  letter-spacing: -.04em;
+  font-weight: 900;
+  user-select:none;
+  text-shadow:0 1.5px #0e151312;
 }
 
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
+/* Theme Toggle Button */
+.theme-toggle {
+  background: var(--accent-secondary);
+  color: var(--accent-primary);
+  border: none;
+  border-radius: 40px;
+  padding: 11px 24px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 7px #d4ff0012;
+  transition: all 0.28s;
+  margin-left: auto;
+}
+.theme-toggle:hover {
+  box-shadow:0 6px 22px #d4ff003a;
+  opacity:0.82;
+  transform: scale(1.06);
+}
+.theme-toggle:active { transform:scale(.97);}
+.main-navbar .theme-toggle { position:static; margin-top:0; }
+
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: #181e19a5;
+  z-index: 83;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2.7px);
+}
+.modal-inner {
+  min-width: 0;
+  animation: modalPopIn .28s cubic-bezier(.78,1.7,.38,1) 0s both;
+}
+@keyframes modalPopIn {from {opacity:0;transform:scale(.93);}to{opacity:1;transform:scale(1);}}
+
+.username-modal .modal-inner {
+  padding:32px 23px 26px 23px;
+  background:#fff;
+  border-radius:19px;
+  box-shadow: 0 3px 28px #0e151325;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+  min-width:0;
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+.username-modal h2 {font-weight:700; margin-bottom: 15px;}
+.username-modal label {
+  font-size:1.07rem; font-weight:500;
+  color:#0e1513e1;
+  display:block;
+  margin-bottom:10px;
+}
+.username-modal input[type="text"] {
+  padding:9px 16px; border-radius:11px; border:1.7px solid #d4ff00; font-size:1.01rem; margin-top:7px;font-weight:600;
+}
+.username-modal .btn-accent {
+  margin-top:18px;
+  background:#d4ff00; color:#0e1513; border:none; padding: 8px 26px; border-radius:13px; font-weight:700;font-size:1.08rem;cursor:pointer;
+}
+.username-modal .btn-accent:active {background:#bbd320;}
+@media (max-width:560px){
+  .username-modal .modal-inner {padding:23px 4vw 12px 4vw;}
 }
 
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* Floating Add Button */
+.btn-float-add {
+  position:fixed; right:7vw; bottom:28px; z-index:66;
+  background: #d4ff00;
+  color: #0e1513;
+  padding: 15px 28px;
+  font-size:1.13rem;
+  font-weight:700;
+  border-radius:26px;
+  box-shadow:0 2px 22px #0e151327;
+  border:none;
+  cursor:pointer;
+  transition: box-shadow .2s, background .2s;
+}
+.btn-float-add:active{background:#c2e900;}
+.btn-float-add:hover{box-shadow:0 8px 32px #d4ff0041;}
+@media (max-width:600px){
+  .btn-float-add {right:4vw; bottom:18px;padding:13px 16vw;}
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+/* Footer */
+.app-footer {
+  background:var(--bg-secondary);
+  color:#a1aa86;
+  border-top:1.5px solid #e0edce80;
+  padding:15px 0;
+  width:100vw;
+  font-size:.98rem;
+  position:fixed;
+  bottom:0; left:0; right:0;
+  z-index:7;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: -.025em;
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
-}
+/* Custom Scrollbar */
+*::-webkit-scrollbar-track { background: #fcfcfc;}
+*::-webkit-scrollbar { width: 8px; background:transparent;}
+*::-webkit-scrollbar-thumb { background: #e7fbaa; border-radius:6px;}
+* { scrollbar-width: thin; scrollbar-color: #d4ff0095 #fcfcfc; }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
-  }
-}
+/* Card Bob Animation Generalization (for pop in) */
+@media (max-width: 768px) { .theme-toggle { font-size:.95rem; padding:9px 13px;} }

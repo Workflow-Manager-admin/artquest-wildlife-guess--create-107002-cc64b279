@@ -1,0 +1,116 @@
+.drawing-card {
+  background: #fcfcfc;
+  border: 2px solid #e0edce;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px 3px #0e151312, 0 1.5px #d4ff0037;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 12px 18px 18px 18px;
+  margin-bottom: 16px;
+  animation: popInCard .6s cubic-bezier(.7,1.7,.4,1) 0s both;
+  position: relative;
+  min-width: 0;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .22s;
+}
+.drawing-card:hover { box-shadow:0 12px 48px 0 #0e151324, 0 1.5px #d4ff0033; }
+
+@keyframes popInCard {
+  from { opacity: 0; transform: scale(.96) translateY(32px);}
+  to {   opacity: 1; transform: scale(1) }
+}
+.drawing-card .drawing-img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  background: #f4ffd6;
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
+
+.drawing-meta {
+  margin-bottom: 6px;
+  display:flex; align-items: center; gap: 14px; justify-content: space-between;
+}
+.prompt-mask {
+  font-size: 1.19rem;
+  opacity:0.89;
+  letter-spacing:4px;
+  flex-shrink: 1;
+}
+.owner-name {
+  color: #0e1513e0;
+  font-size: 0.97rem;
+}
+.score-bar {
+  background:#d4ff0090;
+  color: #070c08;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size:.92rem;
+  font-weight: 700;
+  margin: 0 0 0 6px;
+}
+
+.guess-form-block {
+  margin-bottom: 8px;
+}
+.guess-form {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:2px;
+}
+.guess-input {
+  flex:1;
+  font-size:.97rem;
+  padding: 5px 14px;
+  border-radius:12px;
+  border:1.2px solid #d4ff00;
+  transition: border .22s;
+}
+.guess-input:focus {
+  border:1.4px solid #0e1513;
+}
+.btn-guess { background:#d4ff00; color:#0e1513;font-weight:600; border:none; padding:7px 14px;border-radius:12px;cursor:pointer; }
+.btn-guess:active { background:#c2e900;}
+.already-guessed {
+  font-size:.96rem; color:#1e8f2d; font-weight:600; background:#ebffdbad; padding: 6px 20px; border-radius:18px; display:inline-block
+}
+.error-text { color:#d32f2f; font-size:.93rem; }
+.guess-list {
+  margin-top: 5px;
+  font-size: .98rem;
+  color: #333b;
+}
+.guess-chips {
+  display:flex; gap:7px; margin-top:2px; flex-wrap:wrap;
+}
+
+.wrong-guess {
+  display:inline-block;
+  background:#d32f2f10;
+  border:1px solid #f28282;
+  border-radius:12px;
+  padding:2.5px 9px;
+  color:#d32f2f;
+  font-size:.93rem;
+  margin-bottom:2px;
+}
+.no-wrong { color:#929b; font-size:.92rem; margin-left:2px; }
+.leader-badge {
+  position: absolute;
+  left:15px; top:15px; font-size:1.3rem; background:#d4ff00; border-radius:6px; padding:1.5px 7.5px; font-weight:700;
+}
+.drawing-card.leader {
+  border:2.2px solid #0e1513;
+  box-shadow:0 12px 46px 0 #0e151327, 0 1.5px #d4ff00;
+}
+
+/* Mobile */
+@media (max-width: 620px) {
+  .drawing-card { min-height:280px;margin-bottom:9px;padding:11px 4vw 17px 4vw;}
+  .drawing-meta {flex-direction:column; align-items:flex-start;}
+}

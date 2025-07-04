@@ -1,0 +1,88 @@
+.add-drawing-modal .modal-inner {
+  background: #fcfcfc;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px 1px #0e151314;
+  padding: 34px 28px 32px 28px;
+  margin: 50px auto;
+  max-width:350px;
+  min-width:0;
+  position:relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: modalPopIn .4s cubic-bezier(.78,1.7,.28,1) 0s both;
+}
+.close-btn {
+  position:absolute;
+  top: 18px;
+  right:20px;
+  border:none;
+  background:none;
+  font-size: 1.23rem;
+  cursor:pointer;
+}
+.spin-wheel {
+  margin: 32px auto 12px auto;
+  width: 160px;
+  height: 52px;
+  background: #d4ff00 radial-gradient(circle at 50% 60%, #e8ff6a 20%, #d4ff00 60%);
+  border-radius: 90px;
+  border: 3.5px solid #0e151348;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.23rem;
+  font-weight: 600;
+  color: #0e1513;
+  box-shadow: 0 1px 9px #d4ff0022;
+  transition: transform 0.55s cubic-bezier(.45,2.4,.22,1.1);
+}
+.spin-wheel.spinning {
+  animation: spinPrompt 0.65s cubic-bezier(.45,2.4,.22,1.1);
+}
+@keyframes spinPrompt {
+  0% { transform: scale(.95) rotate(-6deg);}
+  70% {transform: scale(1.1) rotate(19deg);}
+  100% { transform: none;}
+}
+.spin-text {
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btn-spin {
+  background:#e0edce;
+  color:#1f1f18;
+  border:none;
+  font-weight:600;
+  padding:7px 34px;
+  border-radius:13px;
+  font-size:.97rem;
+  margin-bottom:10px;
+  margin-top:6px;
+  cursor:pointer;
+  transition: background .18s;
+}
+.btn-spin:hover {background:#e6efc9;}
+.btn-accent {
+  background:#d4ff00;
+  color:#0e1513;
+  border:none;
+  font-weight:700;
+  padding:11px 24px;
+  border-radius:14px;
+  font-size:1.02rem;
+  cursor:pointer;
+  margin-top:13px;
+  box-shadow:0 1px 4px #d4ff0027;
+}
+.btn-accent:active { background:#bbd320;}
+.btn-draw { }
+@keyframes modalPopIn {
+  from { opacity:0; transform: scale(.92);}
+  to { opacity:1; transform: scale(1);}
+}
+@media (max-width:560px){
+  .add-drawing-modal .modal-inner { padding:23px 6vw 22px 6vw; }
+  .spin-wheel { width:95vw; min-width:0;}
+}
